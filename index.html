@@ -3,106 +3,361 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tu App Increíble</title>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <title>FactuAI - La Solución Definitiva para tus Finanzas</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <script>
+        // La variable 'tailwind' ya está definida en este punto
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'primary-accent': '#5B4AFF', /* Índigo profundo y elegante */
+                        'primary-success': '#4D3BBF', /* Tono Índigo más oscuro para éxito */
+                        'primary-light': '#f7f7f7',
+                        'secondary-gray': '#e5e7eb', /* Para tarjetas sutiles */
+                        'text-dark': '#1f2937',
+                    },
+                    boxShadow: {
+                        // Sombra flotante más suave
+                        'float': '0 20px 50px rgba(0, 0, 0, 0.1)', 
+                    }
+                }
+            }
+        }
+    </script>
+    
     <style>
-        body { font-family: 'Inter', sans-serif; }
-        .hero-bg { background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%); }
-        .smooth-scroll { scroll-behavior: smooth; }
-        .hover-scale { transition: transform 0.3s ease; }
-        .hover-scale:hover { transform: scale(1.05); }
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f7f7f7;
+            color: #1f2937;
+        }
     </style>
 </head>
-<body class="bg-gray-50 smooth-scroll">
-    <!-- Header -->
-    <header class="bg-white shadow-sm fixed w-full z-10">
-        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
-            <h1 class="text-2xl font-bold text-blue-900">Tu App Increíble</h1>
-            <div class="space-x-4">
-                <a href="#features" class="text-gray-600 hover:text-blue-600">Características</a>
-                <a href="#stats" class="text-gray-600 hover:text-blue-600">Por qué nosotros</a>
-                <a href="#download" class="text-gray-600 hover:text-blue-600">Descargar</a>
+<body class="antialiased min-h-screen">
+
+    <header class="p-4 md:px-12 fixed w-full z-20 bg-primary-light/90 backdrop-blur-sm border-b border-gray-200">
+        <div class="flex justify-between items-center max-w-7xl mx-auto">
+            <div class="flex items-center space-x-2 text-xl font-extrabold">
+                <svg class="w-6 h-6 text-primary-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c1.657 0 3 .895 3 2s-1.343 2-3 2-3 .895-3 2 1.343 2 3 2m0-8V4m0 12v4"></path>
+                </svg>
+                <span class="text-text-dark">FactuAI</span>
             </div>
-        </nav>
+            <button id="navDownloadButton" onclick="handleDownload()" class="text-sm font-semibold px-4 py-2 rounded-full bg-primary-accent text-white hover:bg-indigo-700 transition duration-300">
+                Descargar FactuAI
+            </button>
+        </div>
     </header>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero-bg text-white h-screen flex flex-col justify-center items-center text-center px-4 pt-16">
-        <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold mb-6 leading-tight">Cambia la forma en que manejas tu vida</h1>
-        <p class="text-lg sm:text-xl md:text-2xl mb-8 max-w-3xl">Hogar o lejos, local o global — mueve tu mundo con libertad. Descarga la app y comienza en un toque.</p>
-        <a href="https://www.apple.com/app-store/" target="_blank" class="bg-white text-blue-900 font-semibold py-3 px-8 rounded-full hover:bg-blue-100 hover-scale flex items-center">
-            <svg class="w-6 h-6 mr-2" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2.04.81-3.29.79-1.34-.02-2.22-1.23-3.05-2.47-1.76-2.68-3.11-7.56-1.26-10.86 1.01-1.76 2.79-2.86 4.74-2.86 1.48 0 2.94.79 3.84.79.89 0 2.57-.79 4.33-.79 1.65 0 3.39 1.01 4.64 2.67-.17 1.03-.65 2.56-1.45 3.92-.89 1.51-2.06 3.03-3.56 3.03-.56 0-1.25-.25-1.85-.5-.77-.32-1.57-.32-2.34 0-.60.25-1.29.5-1.85.5zM12 4.98c-.89 0-1.71-.45-2.34-1.21-.56-.67-.98-1.51-1.14-2.45 0-.12-.01-.24-.01-.36C9.74.45 11.25 0 12.75 0c.89 0 1.71.45 2.34 1.21.56.67.98 1.51 1.14 2.45 0 .12.01.24.01.36-1.23.45-2.74.9-4.24.9z"/>
-            </svg>
-            Descargar en la App Store
-        </a>
-    </section>
+    <main>
+        <section class="pt-32 pb-16 md:pt-48 md:pb-24 max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            
+            <div class="lg:pr-12 text-center lg:text-left">
+                <h1 class="text-5xl sm:text-7xl md:text-7xl font-extrabold leading-tight tracking-tighter">
+                    <span class="block">La brecha del</span>
+                    <span class="block text-primary-accent">60% se cierra hoy.</span>
+                </h1>
 
-    <!-- Features Section -->
-    <section id="features" class="py-20 bg-white text-center">
-        <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-12">Tu vida, reimaginada</h2>
-        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 px-4">
-            <div class="p-6 bg-gray-50 rounded-lg hover-scale">
-                <h3 class="text-xl font-semibold text-blue-900 mb-4">Gestión Inteligente</h3>
-                <p class="text-gray-600">Organiza tu día automáticamente y alcanza tus metas con facilidad.</p>
-            </div>
-            <div class="p-6 bg-gray-50 rounded-lg hover-scale">
-                <h3 class="text-xl font-semibold text-blue-900 mb-4">Acceso Global</h3>
-                <p class="text-gray-600">Conecta con el mundo, sin importar dónde estés, en un solo toque.</p>
-            </div>
-            <div class="p-6 bg-gray-50 rounded-lg hover-scale">
-                <h3 class="text-xl font-semibold text-blue-900 mb-4">Seguridad Total</h3>
-                <p class="text-gray-600">Tu tranquilidad está garantizada con nuestra protección 24/7.</p>
-            </div>
-        </div>
-    </section>
+                <p class="mt-6 text-2xl text-gray-600 max-w-xl lg:max-w-none">
+                    Más del 60% de la población no sabe dónde va su dinero. **FactuAI te da la claridad, la estrategia y la ventaja** para cambiar tu vida y construir tu verdadera libertad financiera.
+                </p>
 
-    <!-- Stats Section -->
-    <section id="stats" class="py-20 bg-blue-50 text-center">
-        <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-12">Únete a millones de usuarios</h2>
-        <div class="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 px-4">
-            <div>
-                <p class="text-2xl font-bold text-blue-900">60M+</p>
-                <p class="text-gray-600">Usuarios globales</p>
+                <button id="downloadButton" onclick="handleDownload()" class="mt-10 px-10 py-4 text-lg font-bold rounded-full bg-primary-accent text-white shadow-float hover:bg-indigo-700 transition duration-300 transform hover:scale-[1.02]">
+                    Descarga Gratis y Comienza
+                </button>
             </div>
-            <div>
-                <p class="text-2xl font-bold text-blue-900">#3</p>
-                <p class="text-gray-600">App financiera descargada</p>
-            </div>
-            <div>
-                <p class="text-2xl font-bold text-blue-900">4.5/5</p>
-                <p class="text-gray-600">En Trustpilot</p>
-            </div>
-            <div>
-                <p class="text-2xl font-bold text-blue-900">2024</p>
-                <p class="text-gray-600">Empresa más innovadora</p>
-            </div>
-        </div>
-    </section>
 
-    <!-- CTA Section -->
-    <section id="download" class="py-20 bg-gradient-to-r from-blue-600 to-purple-600 text-white text-center">
-        <h2 class="text-3xl sm:text-4xl font-bold mb-6">Descarga la app ahora</h2>
-        <p class="text-lg sm:text-xl mb-8 max-w-2xl mx-auto">Únete a la revolución y transforma tu forma de vivir. Disponible gratis en la App Store.</p>
-        <a href="https://www.apple.com/app-store/" target="_blank" class="bg-white text-blue-900 font-semibold py-3 px-8 rounded-full hover:bg-blue-100 hover-scale flex items-center mx-auto">
-            <svg class="w-6 h-6 mr-2" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2.04.81-3.29.79-1.34-.02-2.22-1.23-3.05-2.47-1.76-2.68-3.11-7.56-1.26-10.86 1.01-1.76 2.79-2.86 4.74-2.86 1.48 0 2.94.79 3.84.79.89 0 2.57-.79 4.33-.79 1.65 0 3.39 1.01 4.64 2.67-.17 1.03-.65 2.56-1.45 3.92-.89 1.51-2.06 3.03-3.56 3.03-.56 0-1.25-.25-1.85-.5-.77-.32-1.57-.32-2.34 0-.60.25-1.29.5-1.85.5zM12 4.98c-.89 0-1.71-.45-2.34-1.21-.56-.67-.98-1.51-1.14-2.45 0-.12-.01-.24-.01-.36C9.74.45 11.25 0 12.75 0c.89 0 1.71.45 2.34 1.21.56.67.98 1.51 1.14 2.45 0 .12.01.24.01.36-1.23.45-2.74.9-4.24.9z"/>
-            </svg>
-            Descargar en la App Store
-        </a>
-    </section>
-
-    <!-- Footer -->
-    <footer class="bg-gray-900 text-white py-12 text-center">
-        <div class="max-w-7xl mx-auto px-4">
-            <p class="text-lg font-semibold mb-4">Tu App Increíble</p>
-            <div class="flex justify-center space-x-4 mb-4">
-                <a href="#" class="text-gray-400 hover:text-white">Términos</a>
-                <a href="#" class="text-gray-400 hover:text-white">Privacidad</a>
-                <a href="#" class="text-gray-400 hover:text-white">Contacto</a>
+            <div id="phoneVisual" class="relative flex justify-center lg:justify-end mt-12 lg:mt-0 opacity-0 translate-y-12 transition-all duration-1000 ease-out">
+                <div class="p-4 bg-white rounded-[40px] shadow-float max-w-sm w-full border border-gray-300 transform lg:translate-x-12 hover:scale-[1.02] transition duration-500">
+                    <img 
+                        src="WhatsApp Image 2025-10-23 at 12.47.05 PM.jpeg" 
+                        alt="Pantalla de la aplicación FactuAI con gráficos y resumen de gastos detallados." 
+                        class="w-full h-auto rounded-3xl object-cover"
+                        onerror="this.onerror=null; this.src='https://placehold.co/400x800/F7F7F7/5B4AFF?text=IMAGEN+NO+CARGADA'" 
+                    >
+                </div>
             </div>
-            <p class="text-gray-400">&copy; 2025 Tu App Increíble. Todos los derechos reservados.</p>
+        </section>
+
+        <section class="py-12 md:py-16 max-w-7xl mx-auto px-6 border-t border-b border-gray-300 mb-16">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                
+                <div class="stat-card opacity-0 translate-y-8 transition-all duration-700 delay-100 ease-out">
+                    <p class="text-5xl font-extrabold text-text-dark">$230+</p>
+                    <p class="mt-2 text-lg text-gray-600 font-medium">Ahorro promedio mensual por usuario.</p>
+                </div>
+
+                <div class="stat-card opacity-0 translate-y-8 transition-all duration-700 delay-200 ease-out">
+                    <p class="text-5xl font-extrabold text-text-dark">98.5%</p>
+                    <p class="mt-2 text-lg text-gray-600 font-medium">Precisión en la categorización de gastos por IA.</p>
+                </div>
+
+                <div class="stat-card opacity-0 translate-y-8 transition-all duration-700 delay-300 ease-out">
+                    <p class="text-5xl font-extrabold text-text-dark">10K+</p>
+                    <p class="mt-2 text-lg text-gray-600 font-medium">Usuarios confiando en FactuAI para dominar sus finanzas.</p>
+                </div>
+
+            </div>
+        </section>
+        
+        <section class="py-20 md:py-28 max-w-5xl mx-auto px-6 border-t border-b border-gray-300 my-16">
+            <h2 class="text-3xl font-bold text-center mb-12 text-text-dark">Dos caminos. Una decisión.</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                
+                <div class="p-6 bg-white rounded-xl border border-red-200/50 shadow-sm feature-card opacity-0 translate-y-8 transition-all duration-700 delay-100 ease-out">
+                    <p class="text-4xl font-extrabold text-red-500 mb-2">60%</p>
+                    <h3 class="text-xl font-semibold mb-3">La Incertidumbre</h3>
+                    <p class="text-gray-600">Gastos ocultos, presupuestos ignorados, estrés financiero recurrente. Un ciclo sin estrategia ni herramientas para la superación.</p>
+                </div>
+
+                <div class="p-6 bg-white rounded-xl border border-primary-accent/50 shadow-sm feature-card opacity-0 translate-y-8 transition-all duration-700 delay-300 ease-out">
+                    <p class="text-4xl font-extrabold text-primary-accent mb-2">FactuAI</p>
+                    <h3 class="text-xl font-semibold mb-3">La Estrategia</h3>
+                    <p class="text-gray-600">Claridad instantánea, cargas automatizadas y análisis de IA para construir hábitos financieros sólidos. Únete a los que sí tienen el control.</p>
+                </div>
+            </div>
+        </section>
+        
+        <section class="py-16 md:py-24 max-w-4xl mx-auto px-6">
+            <h2 class="text-4xl sm:text-5xl font-extrabold text-center mb-16 text-text-dark">Tu Ecosistema de Éxito Financiero.</h2>
+            
+            <div class="space-y-10">
+                <div class="flex flex-col md:flex-row items-start md:space-x-8 border-b border-gray-200 pb-8 feature-card opacity-0 translate-y-8 transition-all duration-700 delay-100 ease-out">
+                    <div class="flex-shrink-0 w-full md:w-1/3">
+                        <span class="text-primary-accent text-3xl font-bold">01.</span>
+                        <h3 class="text-2xl font-bold mt-2 text-text-dark">Integración Marangatu Fluida</h3>
+                    </div>
+                    <div class="mt-4 md:mt-0 md:w-2/3">
+                        <p class="text-lg text-gray-700">Conecta tu contabilidad personal directamente con el sistema Marangatu. Olvídate de la entrada manual de datos y asegura el cumplimiento fiscal con cero errores.</p>
+                    </div>
+                </div>
+
+                <div class="flex flex-col md:flex-row items-start md:space-x-8 border-b border-gray-200 pb-8 feature-card opacity-0 translate-y-8 transition-all duration-700 delay-200 ease-out">
+                    <div class="flex-shrink-0 w-full md:w-1/3">
+                        <span class="text-primary-accent text-3xl font-bold">02.</span>
+                        <h3 class="text-2xl font-bold mt-2 text-text-dark">IA para Categorización y Precios</h3>
+                    </div>
+                    <div class="mt-4 md:mt-0 md:w-2/3">
+                        <p class="text-lg text-gray-700">Nuestro motor de Inteligencia Artificial categoriza automáticamente cada transacción. Además, sugiere mejores precios del mercado para los productos que consumes con frecuencia.</p>
+                    </div>
+                </div>
+
+                <div class="flex flex-col md:flex-row items-start md:space-x-8 border-b border-gray-200 pb-8 feature-card opacity-0 translate-y-8 transition-all duration-700 delay-300 ease-out">
+                    <div class="flex-shrink-0 w-full md:w-1/3">
+                        <span class="text-primary-accent text-3xl font-bold">03.</span>
+                        <h3 class="text-2xl font-bold mt-2 text-text-dark">Control al Nivel de la Factura</h3>
+                    </div>
+                    <div class="mt-4 md:mt-0 md:w-2/3">
+                        <p class="text-lg text-gray-700">La automatización no es superficial. FactuAI desglosa los detalles de cada factura, permitiendo un control granular de cada gasto y minimizando fugas financieras.</p>
+                    </div>
+                </div>
+                
+                 <div class="flex flex-col md:flex-row items-start md:space-x-8 feature-card opacity-0 translate-y-8 transition-all duration-700 delay-400 ease-out">
+                    <div class="flex-shrink-0 w-full md:w-1/3">
+                        <span class="text-primary-accent text-3xl font-bold">04.</span>
+                        <h3 class="text-2xl font-bold mt-2 text-text-dark">Proyecciones y Superación</h3>
+                    </div>
+                    <div class="mt-4 md:mt-0 md:w-2/3">
+                        <p class="text-lg text-gray-700">Dejamos de adivinar dónde estará tu dinero. FactuAI proyecta escenarios futuros y te muestra la ruta óptima para lograr tus objetivos de ahorro y superación personal.</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section class="py-16 md:py-24 bg-white border-t border-gray-300" id="planes">
+            <div class="max-w-7xl mx-auto px-6">
+                <h2 class="text-4xl sm:text-5xl font-extrabold text-center mb-16 text-text-dark">Elige tu Nivel de Dominio Financiero.</h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-10 items-center">
+                    
+                    <div class="p-8 border border-gray-300 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 transform hover:scale-[1.01] bg-gray-50">
+                        <h3 class="text-2xl font-bold text-text-dark">Gratis</h3>
+                        <p class="text-gray-600 mt-2">Ideal para principiantes y control manual.</p>
+                        <p class="mt-6 text-4xl font-extrabold text-text-dark">
+                            $0<span class="text-xl font-medium text-gray-500">/mes</span>
+                        </p>
+                        <ul class="mt-8 space-y-4 text-gray-700">
+                            <li class="flex items-start">
+                                <svg class="w-6 h-6 mr-3 text-primary-accent flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                Carga manual de datos
+                            </li>
+                            <li class="flex items-start text-gray-400">
+                                <svg class="w-6 h-6 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                                Sin Categorización IA
+                            </li>
+                            <li class="flex items-start text-gray-400">
+                                <svg class="w-6 h-6 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                                Sin Conexión Marangatu
+                            </li>
+                        </ul>
+                        <button onclick="handleDownload()" class="mt-10 block w-full py-3 text-center text-lg font-semibold rounded-full bg-gray-200 text-text-dark hover:bg-gray-300 transition">
+                            Comenzar Gratis
+                        </button>
+                    </div>
+                    
+                    <div class="p-10 border-4 border-primary-accent rounded-2xl shadow-2xl bg-white relative transform scale-[1.05] z-10">
+                        <div class="absolute top-0 right-0 -mt-4 -mr-4 bg-primary-accent text-white text-xs font-bold py-1 px-4 rounded-full uppercase tracking-wider">
+                            Más Popular
+                        </div>
+                        <h3 class="text-3xl font-bold text-text-dark">Estándar</h3>
+                        <p class="text-gray-600 mt-2">Automatización y cumplimiento fiscal con IA.</p>
+                        <p class="mt-6 text-5xl font-extrabold text-primary-accent">
+                            $13<span class="text-2xl font-medium text-gray-500">/mes</span>
+                        </p>
+                        <ul class="mt-8 space-y-4 text-gray-700">
+                            <li class="flex items-start">
+                                <svg class="w-6 h-6 mr-3 text-primary-accent flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                Carga de facturas por imágenes con IA
+                            </li>
+                            <li class="flex items-start">
+                                <svg class="w-6 h-6 mr-3 text-primary-accent flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                Interfaz seamless con Marangatu
+                            </li>
+                            <li class="flex items-start">
+                                <svg class="w-6 h-6 mr-3 text-primary-accent flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                Categorización automática con IA
+                            </li>
+                            <li class="flex items-start">
+                                <svg class="w-6 h-6 mr-3 text-primary-accent flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                Hasta 2 años de historial
+                            </li>
+                            <li class="flex items-start">
+                                <svg class="w-6 h-6 mr-3 text-primary-accent flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                Límite de 100 facturas/mes
+                            </li>
+                        </ul>
+                        <button onclick="handleDownload()" class="mt-10 block w-full py-4 text-center text-xl font-extrabold rounded-full bg-primary-accent text-white shadow-lg hover:bg-indigo-700 transition duration-300">
+                            Elegir Estándar
+                        </button>
+                    </div>
+
+                    <div class="p-8 border border-gray-300 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 transform hover:scale-[1.01] bg-gray-50">
+                        <h3 class="text-2xl font-bold text-text-dark">Premium</h3>
+                        <p class="text-gray-600 mt-2">Soporte experto y análisis ilimitado.</p>
+                        <p class="mt-6 text-5xl font-extrabold text-primary-accent">
+                            $29<span class="text-2xl font-medium text-gray-500">/mes</span>
+                        </p>
+                        <ul class="mt-8 space-y-4 text-gray-700">
+                            <li class="flex items-start">
+                                <svg class="w-6 h-6 mr-3 text-primary-accent flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                Todo en Estándar, y más
+                            </li>
+                            <li class="flex items-start">
+                                <svg class="w-6 h-6 mr-3 text-primary-accent flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                Chat con IA integrado para análisis de datos
+                            </li>
+                            <li class="flex items-start">
+                                <svg class="w-6 h-6 mr-3 text-primary-accent flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                Hasta 10 años de historial
+                            </li>
+                            <li class="flex items-start">
+                                <svg class="w-6 h-6 mr-3 text-primary-accent flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                Límite de 1000 facturas/mes
+                            </li>
+                            <li class="flex items-start">
+                                <svg class="w-6 h-6 mr-3 text-primary-accent flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                Asistencia personal de un contador profesional
+                            </li>
+                        </ul>
+                        <button onclick="handleDownload()" class="mt-10 block w-full py-3 text-center text-lg font-semibold rounded-full bg-primary-accent text-white hover:bg-indigo-700 transition">
+                            Elegir Premium
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section class="py-20 md:py-28 bg-primary-accent text-white text-center">
+            <div class="max-w-4xl mx-auto px-6">
+                <h2 class="text-4xl sm:text-5xl font-black tracking-tight">
+                    Deja de reaccionar. <span class="block">Comienza a dominar.</span>
+                </h2>
+                <p class="mt-6 text-xl text-indigo-200">
+                    Instala FactuAI y tomá el control de tu futuro.
+                </p>
+                <button onclick="handleDownload()" class="mt-10 px-12 py-5 text-xl font-extrabold rounded-full bg-white text-primary-accent shadow-lg hover:bg-gray-100 transition duration-300 transform hover:-translate-y-0.5">
+                    Descargar FactuAI (App Store / Play Store)
+                </button>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="py-10 text-center text-gray-500 text-sm bg-white">
+        <p>&copy; 2025 FactuAI App. Software de Contabilidad Personal. <span class="text-primary-accent">Alta performance.</span></p>
+        <div class="mt-4 space-x-6">
+            <a href="#" class="hover:text-primary-accent transition">Política de Privacidad</a>
+            <span class="text-gray-400">|</span>
+            <a href="#" class="hover:text-primary-accent transition">Términos de Servicio</a>
         </div>
     </footer>
+
+    <script>
+        console.log("FactuAI Landing Page Script Iniciado.");
+
+        // --- LÓGICA DE ANIMACIÓN AL SCROLL (Scroll Dynamics) ---
+
+        // Función para manejar las animaciones al hacer scroll
+        const handleScrollAnimation = () => {
+            // Animar el visual del teléfono (Sección 1)
+            const phoneVisual = document.getElementById('phoneVisual');
+            if (phoneVisual) {
+                const rect = phoneVisual.getBoundingClientRect();
+                if (rect.top < window.innerHeight * 0.9) {
+                    phoneVisual.classList.remove('opacity-0', 'translate-y-12');
+                }
+            }
+            
+            // Animar las tarjetas de estadísticas (Sección 1.5)
+            const statCards = document.querySelectorAll('.stat-card');
+            statCards.forEach(card => {
+                const rect = card.getBoundingClientRect();
+                if (rect.top < window.innerHeight * 0.9) {
+                    card.classList.remove('opacity-0', 'translate-y-8');
+                }
+            });
+
+            // Animar las tarjetas de características (Sección 2 y 3)
+            const featureCards = document.querySelectorAll('.feature-card');
+            featureCards.forEach(card => {
+                const rect = card.getBoundingClientRect();
+                // Si el elemento está por encima del 20% inferior de la ventana, animar
+                if (rect.top < window.innerHeight * 0.8) {
+                    card.classList.remove('opacity-0', 'translate-y-8');
+                }
+            });
+        };
+
+        // Escucha el evento de DOMContentLoaded para inicializar el scroll
+        document.addEventListener('DOMContentLoaded', () => {
+            handleScrollAnimation();
+            window.addEventListener('scroll', handleScrollAnimation);
+        });
+
+        // --- LÓGICA DEL BOTÓN DE DESCARGA ---
+        function handleDownload() {
+            const button = document.getElementById('downloadButton');
+            const navButton = document.getElementById('navDownloadButton');
+            
+            // Primary button: Usar el tono de éxito (primary-success)
+            button.textContent = '¡Descarga Iniciada!';
+            button.classList.remove('bg-primary-accent', 'hover:bg-indigo-700', 'shadow-float'); 
+            button.classList.add('bg-primary-success', 'hover:bg-primary-success'); 
+
+            // Nav button: Usar el tono de éxito
+            navButton.textContent = 'Descargando...';
+            navButton.classList.remove('bg-primary-accent', 'text-white', 'hover:bg-indigo-700');
+            navButton.classList.add('bg-primary-success', 'text-white'); 
+
+            console.log('Descarga simulada. Redireccionando a la App Store...');
+        }
+    </script>
+
 </body>
 </html>
