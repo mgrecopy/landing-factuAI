@@ -13,11 +13,11 @@
             theme: {
                 extend: {
                     colors: {
-                        'primary-accent': '#111111', /* Negro/Principal */
-                        'primary-success': '#d9dcde', /* Gris Claro Suave para éxito */
-                        'primary-light': '#ffffff',
-                        'secondary-gray': '#ecf0f1', /* Para tarjetas sutiles */
-                        'text-dark': '#111111',
+                        'primary-accent': '#3f72af', /* Azul Principal */
+                        'primary-success': '#315a89', /* Azul Oscuro Éxito */
+                        'primary-light': '#f9f7f7',
+                        'secondary-gray': '#e3dada', /* Para tarjetas sutiles */
+                        'text-dark': '#3f72af', /* Usamos el color principal para el texto oscuro */
                     },
                     boxShadow: {
                         // Sombra flotante más suave
@@ -32,8 +32,8 @@
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #ecf0f1; /* Usamos el gris muy claro */
-            color: #111111; /* Usamos el negro/text-dark */
+            background-color: #f9f7f7; /* Usamos el blanco roto */
+            color: #3f72af; /* Usamos el azul principal para el texto */
         }
     </style>
 </head>
@@ -47,7 +47,7 @@
                 </svg>
                 <span class="text-text-dark">FactuAI</span>
             </div>
-            <button id="navDownloadButton" onclick="handleDownload()" class="text-sm font-semibold px-4 py-2 rounded-full bg-primary-accent text-white hover:bg-gray-700 transition duration-300">
+            <button id="navDownloadButton" onclick="handleDownload()" class="text-sm font-semibold px-4 py-2 rounded-full bg-primary-accent text-white hover:bg-primary-success transition duration-300">
                 Descargar FactuAI
             </button>
         </div>
@@ -66,7 +66,7 @@
                     Más del 60% de la población no sabe a dónde va su dinero. <strong>FactuAI</strong> te ofrece la claridad, la estrategia y la ventaja que necesitas para transformar tu vida y construir tu verdadera libertad financiera.
                 </p>
 
-                <button id="downloadButton" onclick="handleDownload()" class="mt-10 px-10 py-4 text-lg font-bold rounded-full bg-primary-accent text-white shadow-float hover:bg-gray-700 transition duration-300 transform hover:scale-[1.02]">
+                <button id="downloadButton" onclick="handleDownload()" class="mt-10 px-10 py-4 text-lg font-bold rounded-full bg-primary-accent text-white shadow-float hover:bg-primary-success transition duration-300 transform hover:scale-[1.02]">
                     Descarga Gratis y Comienza
                 </button>
             </div>
@@ -82,7 +82,7 @@
                         src="FactuAI.jpeg" 
                         alt="Pantalla de la aplicación FactuAI con gráficos y resumen de gastos detallados." 
                         class="w-full h-auto rounded-[30px] object-cover border border-gray-200"
-                        onerror="this.onerror=null; this.src='https://placehold.co/400x800/ecf0f1/111111?text=IMAGEN+NO+CARGADA'" 
+                        onerror="this.onerror=null; this.src='https://placehold.co/400x800/f9f7f7/3f72af?text=IMAGEN+NO+CARGADA'" 
                     >
                 </div>
             </div>
@@ -91,7 +91,7 @@
                     position: relative;
                     border-radius: 40px; /* Softer rounded corners like iPhone 14 */
                     overflow: hidden;
-                    background: linear-gradient(135deg, #bdc3c7, #a1aab0); /* Subtle gradient for realism */
+                    background: linear-gradient(135deg, #5c8cc4, #3f72af); /* Subtle gradient for realism */
                     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
                     width: 100%;
                     max-width: 360px; /* Closer to iPhone 14 width */
@@ -262,7 +262,7 @@
                                 Límite de 100 facturas/mes
                             </li>
                         </ul>
-                        <button onclick="handleDownload()" class="mt-10 block w-full py-4 text-center text-xl font-extrabold rounded-full bg-primary-accent text-white shadow-lg hover:bg-gray-700 transition duration-300">
+                        <button onclick="handleDownload()" class="mt-10 block w-full py-4 text-center text-xl font-extrabold rounded-full bg-primary-accent text-white shadow-lg hover:bg-primary-success transition duration-300">
                             Elegir Estándar
                         </button>
                     </div>
@@ -295,7 +295,7 @@
                                 Asistencia personal de un contador profesional
                             </li>
                         </ul>
-                        <button onclick="handleDownload()" class="mt-10 block w-full py-3 text-center text-lg font-semibold rounded-full bg-primary-accent text-white hover:bg-gray-700 transition">
+                        <button onclick="handleDownload()" class="mt-10 block w-full py-3 text-center text-lg font-semibold rounded-full bg-primary-accent text-white hover:bg-primary-success transition">
                             Elegir Premium
                         </button>
                     </div>
@@ -309,7 +309,7 @@
                 <h2 class="text-4xl sm:text-5xl font-black tracking-tight">
                     Deja de reaccionar. <span class="block">Comienza a dominar.</span>
                 </h2>
-                <p class="mt-6 text-xl text-gray-200">
+                <p class="mt-6 text-xl text-blue-200">
                     Instala FactuAI y tomá el control de tu futuro.
                 </p>
                 <button onclick="handleDownload()" class="mt-10 px-12 py-5 text-xl font-extrabold rounded-full bg-white text-primary-accent shadow-lg hover:bg-gray-100 transition duration-300 transform hover:-translate-y-0.5">
@@ -378,13 +378,13 @@
             
             // Primary button: Usar el tono de éxito (primary-success)
             button.textContent = '¡Descarga Iniciada!';
-            button.classList.remove('bg-primary-accent', 'hover:bg-gray-700', 'shadow-float'); 
+            button.classList.remove('bg-primary-accent', 'hover:bg-primary-success', 'shadow-float'); 
             button.classList.add('bg-primary-success', 'hover:bg-primary-success'); 
 
             // Nav button: Usar el tono de éxito
             navButton.textContent = 'Descargando...';
-            navButton.classList.remove('bg-primary-accent', 'text-white', 'hover:bg-gray-700');
-            navButton.classList.add('bg-primary-success', 'text-text-dark'); 
+            navButton.classList.remove('bg-primary-accent', 'text-white', 'hover:bg-primary-success');
+            navButton.classList.add('bg-primary-success', 'text-white'); 
 
             console.log('Descarga simulada. Redireccionando a la App Store...');
         }
